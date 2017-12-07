@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Jquery Connecting Line</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="node1" class="node normal">Drag Me</div>
+<div id="node2" class="node error" style="left: 32px; top: 252px;">Drag Me</div>
+<div id="node3" class="node normal" style="left: 435px; top: 356px;">Drag Me</div>
+<div id="node4" class="node normal">Drag Me</div>
+<div id="node5" class="node error" style="left: 528px; top: 80px;">Drag Me</div>
+<div id="node6" class="node normal" style="left: 219px; top: 402px;">Drag Me</div>
+<div id="node7" class="node error" style="left: 652px; top: 221px;">Drag Me</div>
+<script type="text/javascript" src="required/script/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="required/script/jquery.connectingLine.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui-1.12.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.ui.touch-punch.min.js"></script>
+
+<script type="text/javascript">
+	var mySVG = $('body').connect();
+		mySVG.drawLine({
+			left_node:'.node',
+			right_node:'.node',
+			horizantal_gap:10,
+			error:true,
+			width:1
+		});
+		$( ".node" ).draggable({
+		  drag: function(event, ui){mySVG.redrawLines();}
+		});
+</script>
+</body>
+</html>
